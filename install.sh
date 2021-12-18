@@ -7,6 +7,9 @@ else
 	#Update and Upgrade
 	echo "Updating and Upgrading"
 	apt-get update && sudo apt-get upgrade -y
+	apt-get install dos2unix
+	apt install -y neofetch
+	sudo apt install -y samba
 
 	sudo apt-get install dialog
 	cmd=(dialog --separate-output --checklist "Please Select Software you want to install:" 22 76 16)
