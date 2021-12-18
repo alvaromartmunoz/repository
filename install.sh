@@ -9,13 +9,13 @@ else
 	apt-get update && sudo apt-get upgrade -y
 	sudo apt-get install dialog
 	cmd=(dialog --separate-output --checklist "Please Select Software you want to install:" 22 76 16)
-	options=(1 "BashRC ALIAS" off    # any option can be set to default to "on"
-	         2 "Docker" off
-	         3 "Portainer" off
-	         4 "Cockpit" off
-	         5 "Git" off
-	         6 "Generating SSH keys" off
-	         7 "" off
+	options=(1 "Base" off    # any option can be set to default to "on"
+	         2 "BashRC ALIAS" off
+	         3 "Docker" off
+	         4 "Portainer" off
+	         5 "Cockpit" off
+	         6 "Git" off
+	         7 "Generating SSH keys" off
 	         8 "" off
 	         9 "" off
 	         10 "" off
