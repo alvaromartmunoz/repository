@@ -16,7 +16,7 @@ else
 	         4 "Cockpit" off
 	         5 "Git" off
 	         6 "Generating SSH keys" off
-	         7 "Way Back Machine" off
+	         7 "" off
 	         8 "" off
 	         9 "" off
 	         10 "" off
@@ -94,8 +94,7 @@ else
 				ssh-keygen -t rsa -b 4096
 				;;
 			7)
-				sudo apt install ruby
-				sudo gem install wayback_machine_downloader
+				
 				;;
 			8)
 				
