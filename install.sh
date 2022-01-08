@@ -16,7 +16,7 @@ else
 	         5 "Cockpit" off
 	         6 "Git" off
 	         7 "Generating SSH keys" off
-	         8 "" off
+	         8 "Container ITLandScape" off
 	         9 "" off
 	         10 "" off
 	         11 "" off
@@ -43,11 +43,10 @@ else
 		do
 		    case $choice in
 	        	1)
-	            apt install dos2unix
-				apt install -y samba
-				apt install -y neofetch
+	            apt install -y dos2unix neofetch samba curl 
 				;;
 	        2)
+			#AGREGADO DE ALIAS Y DEMÁS
 			    echo 'limpiarpantalla (){' >> /etc/bash.bashrc
 				echo '        clear' >> /etc/bash.bashrc
 				echo '        neofetch' >> /etc/bash.bashrc
@@ -58,20 +57,21 @@ else
 				echo 'alias desbloqueardpkg="rm /var/lib/apt/lists/lock && rm /var/cache/apt/archives/lock && rm /var/lib/dpkg/lock"' >> /etc/bash.bashrc
 				echo 'alias ..="cd .."' >> /etc/bash.bashrc
 				echo 'alias limpiador="sudo apt-get autoremove && sudo apt-get clean"' >> /etc/bash.bashrc
+				echo "setxkbmap -option grp:alt_shift_toggle es" >> ~/.bashrc
 				;;
 			3)
 			    apt install docker.io -y # Instala Docker
 				systemctl start docker # Inicia el Servicio de Docker
 				systemctl enable docker # Inicia los contenedores de Docker al iniciar el LXC
 				
-				#Docker-compose
+			#Docker-compose
 				apt install curl -y
 				curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 				chmod +x /usr/local/bin/docker-compose
 
 				;;
     		4)	
-				#Instalar Portainer
+			#Instalar Portainer
 				docker volume create portainer_data # Creara un Volumen persistente para los datos
 				docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 				;;
@@ -88,16 +88,23 @@ else
 				;;
 
 			6)
-				#Install git
+			#Install git
 				echo "Installing Git, please congiure git later..."
 				apt install git -y
 				;;
 			7)
+			#GENERAR CLAVES SSH
 				echo "Generating SSH keys"
 				ssh-keygen -t rsa -b 4096
 				;;
 			8)
-				
+			#INSTALAR DOCKER IMAGE DE SYSADMINLANDSCAPE
+				echo "Comprobando credenciales de docker Hub"
+				docker login
+				echo "Descargando imagen sysadminlandscape"
+				docker pull alvaro6556/sysadminlandscape:latest
+				echo "Corriendo contenedor"
+				docker run -it --rm -d -p 8887:80 --name itlandscape alvaro6556/sysadminlandscape:latest
 				;;
 			9)
 				
