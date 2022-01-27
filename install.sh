@@ -51,7 +51,7 @@ else
 				echo '        clear' >> /etc/bash.bashrc
 				echo '        neofetch' >> /etc/bash.bashrc
 				echo '        echo Hoy estamos a dia `date`' >> /etc/bash.bashrc
-				echo '        echo "DIRECCION IP DEL SERVIDOR:" `hostname -I | awk '{print $1}'`' >> /etc/bash.bashrc
+				echo '        echo "DIRECCION IP DEL SERVIDOR:" `ip route get 1.2.3.4 | awk '{print $7}'`' >> /etc/bash.bashrc
 				echo '}' >> /etc/bash.bashrc
 				echo 'limpiarpantalla' >> /etc/bash.bashrc
 				echo 'alias update="sudo apt update && sudo apt upgrade"' >> /etc/bash.bashrc
