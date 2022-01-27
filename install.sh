@@ -17,7 +17,7 @@ else
 	         6 "Git" off
 	         7 "Generating SSH keys" off
 	         8 "Container ITLandScape" off
-	         9 "" off
+	         9 "Ansible" off
 	         10 "" off
 	         11 "" off
 	         12 "" off
@@ -108,7 +108,10 @@ else
 				docker run -it --rm -d -p 8887:80 --name itlandscape alvaro6556/sysadminlandscape:latest
 				;;
 			9)
-				
+				apt-get update && apt-get install -y python-minimal
+				apt-get update && apt-get install software-properties-common
+				apt-add-repository --yes --update ppa:ansible/ansible
+				apt-get install ansible
 				;;
 			10)
 				
