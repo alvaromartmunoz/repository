@@ -96,6 +96,7 @@ else
 			7)
 			#GENERAR CLAVES SSH
 				echo "Generating SSH keys"
+				sudo su administrador
 				ssh-keygen -t rsa -b 4096
 				;;
 			8)
