@@ -2,7 +2,7 @@
 
 echo "CREANDO CARPETAS"
 
-sleep 3
+sleep 2
 
 mkdir creardockerimagenweb
 mkdir creardockerimagenweb/contenido
@@ -11,7 +11,7 @@ touch creardockerimagenweb/Dockerfile
 echo "QUE NOMBRE DE IMAGEN QUIERES??"
 read nombreimagen
 
-sleep 2
+sleep 1
 
 echo "COPIANDO WEB"
 cp -r web/* creardockerimagenweb/contenido/
@@ -24,7 +24,7 @@ codigo_web () {
   echo 'COPY contenido/ /usr/share/nginx/html/' >> Dockerfile
 }
 
-sleep 2
+sleep 1
 
 construir_imagen () {
   docker build -t $nombreimagen .
@@ -42,7 +42,27 @@ while true; do
 		echo "CORRIENDO CONTENEDOR..."
 		docker ps -a | grep $nombreimagen 
 		break;;
-        [Nn]* ) exit;;
+        [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
 done
+
+while true; do
+    read -p "¿QUIERES PUSHEAR LA IMAGEN? [Y/N] " yn
+    case $yn in
+        [Yy]* ) echo "LOGUEANDO EN DOCKER HUB"
+                docker login
+		echo "¿QUE VERSION ES LA NUEVA IMAGEN?"
+		read versionimagen
+		sleep 1
+                echo "CAMBIANDO NOMBRE A LA IMAGEN"
+		sleep 1
+		docker tag $nombreimagen alvaro6556/$nombreimagen:$versionimagen
+		docker push alvaro6556/$nombreimagen:$versionimagen
+                break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+rm -drf ../creardockerimagenweb
