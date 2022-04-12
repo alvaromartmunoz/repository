@@ -100,13 +100,13 @@ else
 				ssh-keygen -t rsa -b 4096
 				;;
 			8)
-			#INSTALAR DOCKER IMAGE DE SYSADMINLANDSCAPE
-				echo "Comprobando credenciales de docker Hub"
-				docker login
-				echo "Descargando imagen sysadminlandscape"
-				docker pull alvaro6556/sysadminlandscape:latest
-				echo "Corriendo contenedor"
-				docker run -it --rm -d -p 8887:80 --name itlandscape alvaro6556/sysadminlandscape:latest
+			#GITHUB LOGGIN
+				echo "GITHUB USER"
+				read gituser
+				echo "GITUSER MAIL"
+				read gitmail
+				git config --global user.name $gituser
+				git config --global user.email $gitmail
 				;;
 			9)
 				apt-get update && apt-get install -y python-minimal
