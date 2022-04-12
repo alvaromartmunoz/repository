@@ -51,7 +51,10 @@ while true; do
     read -p "¿QUIERES PUSHEAR LA IMAGEN? [Y/N] " yn
     case $yn in
         [Yy]* ) echo "LOGUEANDO EN DOCKER HUB"
-                docker login
+                if grep -q 'auths": {}' ~/.docker/config.json ;
+        		then sudo docker login;
+        		else echo "Loggin Successfully";
+		fi
 		echo "¿QUE VERSION ES LA NUEVA IMAGEN?"
 		read versionimagen
 		sleep 1
