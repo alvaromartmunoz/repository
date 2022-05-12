@@ -64,6 +64,7 @@ else
 			    apt install docker.io -y # Instala Docker
 				systemctl start docker # Inicia el Servicio de Docker
 				systemctl enable docker # Inicia los contenedores de Docker al iniciar el LXC
+				sudo usermod -aG docker $USER #Cambia los permisos
 				
 			#Docker-compose
 				apt install curl -y
