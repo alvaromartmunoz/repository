@@ -50,7 +50,7 @@ else
 			    echo 'limpiarpantalla (){' >> /etc/bash.bashrc
 				echo '        clear' >> /etc/bash.bashrc
 				echo '        neofetch' >> /etc/bash.bashrc
-				echo '        echo Hoy estamos a dia `date`' >> /etc/bash.bashrc
+				echo '        echo Hoy estamos a dia `date '+%Y/%m/%d %H:%M:%S'`' >> /etc/bash.bashrc
 				echo '        echo "DIRECCION IP DEL SERVIDOR:" `ip route get 1.2.3.4 | awk '{print $7}'`' >> /etc/bash.bashrc
 				echo '}' >> /etc/bash.bashrc
 				echo 'limpiarpantalla' >> /etc/bash.bashrc
