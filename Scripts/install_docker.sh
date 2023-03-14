@@ -2,7 +2,7 @@
 # Verficando Permisos
 function print {
         DATE=`date +'%Y-%m-%d %H:%M:%S'`
-        echo "[$DATE] $1" >> /usr/local/$ENTORNO/SymphonyShared7/scripts/logs/MaquinasIaaS_log.log
+        echo "[$DATE] $1" >> /logs/MaquinasIaaS_log.log
 }
 sudo -l
 
