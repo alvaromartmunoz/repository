@@ -4,8 +4,10 @@ function print {
         DATE=`date +'%Y-%m-%d %H:%M:%S'`
         echo "[$DATE] $1" >> /logs/MaquinasIaaS_log.log
 }
-sudo -l
 
+if [ ! $(id -u) -eq 0 ]; then
+        fatal "You need to be root to perform this install"
+else
 # Ubuntu
 sudo apt-get update
 sudo apt-get install \
@@ -33,3 +35,4 @@ sudo chmod +x /usr/local/bin/docker-compose
 # Docker Users
 name=$(whoami)
 sudo usermod -aG docker $name
+fi
