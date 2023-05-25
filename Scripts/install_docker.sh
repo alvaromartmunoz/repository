@@ -5,9 +5,12 @@ function print {
         echo "[$DATE] $1" >> /logs/MaquinasIaaS_log.log
 }
 
-if [ ! $(id -u) -eq 0 ]; then
-        fatal "You need to be root to perform this install"
+if [ "$(whoami)" != "root" ]; then
+        echo -e "${red}Fail${reset}"
+        echo "Please use a root account or sudo Permissions"
+        exit 1
 else
+        echo -e "${green}OK${reset}"
 # Ubuntu
 sudo apt-get update
 sudo apt-get install \
