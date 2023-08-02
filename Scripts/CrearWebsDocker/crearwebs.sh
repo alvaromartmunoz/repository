@@ -60,8 +60,8 @@ while true; do
 		sleep 1
                 echo "CAMBIANDO NOMBRE A LA IMAGEN"
 		sleep 1
-		docker tag $nombreimagen alvaro6556/$nombreimagen:$versionimagen
-		docker push alvaro6556/$nombreimagen:$versionimagen
+		docker tag $nombreimagen repositorio/$nombreimagen:$versionimagen
+		docker push repositorio/$nombreimagen:$versionimagen
                 break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
